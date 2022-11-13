@@ -1,8 +1,14 @@
 import React from "react";
-import { NativeBaseProvider, extendTheme, Text, Box } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NativeBaseProvider, extendTheme } from "native-base";
 import { useFonts } from "expo-font";
-import { Body2 } from "./components/Typography/Body";
-import { NavBar } from "./components/Navigation/NavBar";
+import { Home } from "./screens/Home";
+import { Liftclub } from "./screens/Liftclub";
+import { Schedule } from "./screens/Schedule";
+import { Profile } from "./screens/Profile";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const theme = extendTheme({
@@ -73,15 +79,20 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <Box
-        flex={1}
-        bg="app.primary"
-        alignItems="center"
-        justifyContent="flex-end"
-      >
-        <Body2 py="32">Open up App.js to start working on your app!</Body2>
-        <NavBar></NavBar>
-      </Box>
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="home"
+          screenOptions={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }}
+        >
+          <Tab.Screen name="home" component={Home} />
+          <Tab.Screen name="liftclub" component={Liftclub} />
+          <Tab.Screen name="schedule" component={Schedule} />
+          <Tab.Screen name="profile" component={Profile} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

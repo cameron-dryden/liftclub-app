@@ -1,14 +1,30 @@
 import React from "react";
-import { Box, HStack, Pressable, Center, Icon } from "native-base";
+import { Box, HStack, Pressable, Center, Icon, Divider } from "native-base";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Body5 } from "../Typography/Body";
+import { useNavigation } from "@react-navigation/native";
 
-function NavBar() {
+function NavBar(props) {
   const [selected, setSelected] = React.useState(1);
+  const navigation = useNavigation();
   return (
-    <Box bg="grayscale.1" width="100%">
+    <Box
+      bg="grayscale.1"
+      width="100%"
+      position="absolute"
+      bottom="0"
+      {...props}
+    >
+      <Divider bg="grayscale.2" />
       <HStack bg="grayscale.1" alignItems="center">
-        <Pressable py="2" flex={1} onPress={() => setSelected(0)}>
+        <Pressable
+          py="2"
+          flex={1}
+          onPress={() => {
+            setSelected(0);
+            navigation.navigate("home");
+          }}
+        >
           <Center>
             <Icon
               mb="1"
@@ -28,7 +44,14 @@ function NavBar() {
             </Body5>
           </Center>
         </Pressable>
-        <Pressable py="2" flex={1} onPress={() => setSelected(1)}>
+        <Pressable
+          py="2"
+          flex={1}
+          onPress={() => {
+            setSelected(1);
+            navigation.navigate("liftclub");
+          }}
+        >
           <Center>
             <Icon
               mb="1"
@@ -44,7 +67,14 @@ function NavBar() {
             </Body5>
           </Center>
         </Pressable>
-        <Pressable py="2" flex={1} onPress={() => setSelected(2)}>
+        <Pressable
+          py="2"
+          flex={1}
+          onPress={() => {
+            setSelected(2);
+            navigation.navigate("schedule");
+          }}
+        >
           <Center>
             <Icon
               mb="1"
@@ -64,7 +94,14 @@ function NavBar() {
             </Body5>
           </Center>
         </Pressable>
-        <Pressable py="2" flex={1} onPress={() => setSelected(3)}>
+        <Pressable
+          py="2"
+          flex={1}
+          onPress={() => {
+            setSelected(3);
+            navigation.navigate("profile");
+          }}
+        >
           <Center>
             <Icon
               mb="1"
