@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "club_name": "curabitur in",
+    "notifications": 2,
+    "club_color": "pink"
+  },
+  {
+    "id": 2,
+    "club_name": "at nulla suspendisse",
+    "notifications": 26,
+    "club_color": "purple"
+  },
+  {
+    "id": 3,
+    "club_name": "in blandit ultrices enim",
+    "notifications": 32,
+    "club_color": "cyan"
+  },
+  {
+    "id": 4,
+    "club_name": "nulla suspendisse potenti cras",
+    "notifications": 44,
+    "club_color": "blue"
+  },
+  {
+    "id": 5,
+    "club_name": "quam pharetra",
+    "notifications": 11,
+    "club_color": "orange"
+  }
+]

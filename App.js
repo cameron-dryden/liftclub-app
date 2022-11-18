@@ -4,7 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { useFonts } from "expo-font";
 import { Home } from "./screens/Home";
-import { Liftclub } from "./screens/Liftclub";
+import { Liftclub } from "./screens/Liftclub/Liftclub";
+import { ClubChat } from "./screens/Liftclub/ClubChat";
 import { Schedule } from "./screens/Schedule";
 import { Profile } from "./screens/Profile";
 
@@ -19,6 +20,14 @@ export default function App() {
         tertiary: "#CDE0EF",
         accent1: "#CBDDE8",
         accent2: "#DDECF3",
+        red: "#F5A3A3",
+        orange: "#F5CFA3",
+        yellow: "#F5EDA3",
+        green: "#B4F5A3",
+        cyan: "#A3F5F0",
+        blue: "#A3ABF5",
+        purple: "#DBA3F5",
+        pink: "#F5A3D4",
       },
       grayscale: {
         1: "#FFFFFF",

@@ -49,4 +49,16 @@ function Heading4(props) {
   );
 }
 
-export { Heading1, Heading2, Heading3, Heading4 };
+function Heading5(props) {
+  return (
+    <Heading
+      fontWeight="600"
+      fontSize="18px"
+      lineHeight="28px"
+      color="grayscale.6"
+      {...props}
+    />
+  );
+}
+
+export { Heading1, Heading2, Heading3, Heading4, Heading5 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Box } from "native-base";
-import { Heading3 } from "./Typography/Headings";
+import { Heading3 } from "../Typography/Headings";
 
 LocaleConfig.locales["en"] = {
   monthNames: [
@@ -67,18 +67,20 @@ function LiftsCalendar() {
     <Box
       alignSelf="center"
       width="90%"
-      height="380px"
-      px="2px"
+      py="5px"
+      px="5px"
       bg="grayscale.1"
       borderWidth="2px"
       borderColor="app.secondary"
       rounded="20px"
       justifyContent="center"
+      shadow={2}
     >
       <Calendar
-        hideArrows={true}
         enableSwipeMonths={true}
         showSixWeeks={true}
+        markedDates={markedDate}
+        markingType="multi-period"
         renderHeader={(date) => {
           return <Heading3>{monthNames[date.getMonth()]}'s lifts</Heading3>;
         }}
@@ -87,10 +89,15 @@ function LiftsCalendar() {
           markedDates[day.dateString] = {
             selected: true,
           };
+          markedDates["2022-11-17"] = {
+            periods: [
+              { startingDay: true, endingDay: true, color: "#F5A3A3" },
+              { startingDay: true, endingDay: true, color: "#DBA3F5" },
+            ],
+          };
 
           setMarkedDate(markedDates);
         }}
-        markedDates={markedDate}
         theme={{
           textSectionTitleColor: "#ABABB5",
           selectedDayBackgroundColor: "#8BBDD8",
@@ -98,6 +105,7 @@ function LiftsCalendar() {
           todayTextColor: "#8BBDD8",
           dayTextColor: "#111111",
           indicatorColor: "blue",
+          arrowColor: "#8BBDD8",
           textDayFontFamily: "Manrope-Medium",
           textDayHeaderFontFamily: "Manrope-Medium",
           textDayFontSize: 16,

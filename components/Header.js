@@ -1,6 +1,6 @@
 import React from "react";
-import { Box } from "native-base";
-import { Heading1 } from "./Typography/Headings";
+import { Box, HStack } from "native-base";
+import { Heading1, Heading2 } from "./Typography/Headings";
 
 function Header(props) {
   return (
@@ -19,7 +19,20 @@ function Header(props) {
         alignItems="center"
         justifyContent="center"
       >
-        <Heading1>{props.text}</Heading1>
+        <HStack width="100%" justifyContent="center" alignItems="center">
+          {props.leftIcon ? (
+            <Box position="absolute" left="5px">
+              {props.leftIcon}
+            </Box>
+          ) : (
+            ""
+          )}
+          {props.mini ? (
+            <Heading2>{props.text}</Heading2>
+          ) : (
+            <Heading1>{props.text}</Heading1>
+          )}
+        </HStack>
       </Box>
     </Box>
   );
