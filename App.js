@@ -1,11 +1,10 @@
-import React from "react";
+import { React } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { useFonts } from "expo-font";
 import { Home } from "./screens/Home";
 import { Liftclub } from "./screens/Liftclub/Liftclub";
-import { ClubChat } from "./screens/Liftclub/ClubChat";
 import { Schedule } from "./screens/Schedule";
 import { Profile } from "./screens/Profile";
 

@@ -37,7 +37,7 @@ LocaleConfig.locales["en"] = {
 };
 LocaleConfig.defaultLocale = "en";
 
-function LiftsCalendar() {
+function LiftsCalendar(props) {
   const monthNames = [
     "January",
     "February",
@@ -96,6 +96,7 @@ function LiftsCalendar() {
             ],
           };
 
+          props.setDate(day.dateString);
           setMarkedDate(markedDates);
         }}
         theme={{

@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, HStack, VStack } from "native-base";
+import { Box, HStack, VStack, Badge } from "native-base";
 import { Heading4, Heading5 } from "../Typography/Headings";
 import { Body3 } from "../Typography/Body";
+import { Chip } from "../Chip";
 
 function AgendaItem(props) {
   return (
@@ -32,7 +33,52 @@ function AgendaItem(props) {
   );
 }
 
-function LiftsAgenda() {
+function LiftsAgenda(props) {
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const date = props.date.split("-");
+  const day = date[2];
+  const month = monthNames[date[1] - 1];
+  const year = date[0];
+
+  const daysBetween = () => {
+    const today = new Date();
+    const selDate = new Date(year, date[1] - 1, day);
+    const daysDiff = Math.round(
+      (selDate.getTime() - today.getTime()) / (1000 * 3600 * 24) + 1
+    );
+    if (daysDiff == 0) {
+      return (
+        <Badge
+          bg="app.primary"
+          height="30px"
+          rounded="full"
+          _text={{
+            color: "grayscale.1",
+            fontSize: 16,
+            fontWight: "500",
+            lineHeight: "21px",
+          }}
+        >
+          Today
+        </Badge>
+      );
+    }
+  };
+
   return (
     <Box
       alignSelf="center"
@@ -46,7 +92,10 @@ function LiftsAgenda() {
       shadow={2}
     >
       <VStack width="100%" space={2} pt="5px" pb="10px" alignItems="center">
-        <Heading4>Today, 3 September 2022</Heading4>
+        <HStack justifyContent="center" space={2}>
+          {daysBetween()}
+          <Heading4> {`${day} ${month} ${year}`}</Heading4>
+        </HStack>
         <AgendaItem
           agendaColor="app.red"
           time="08:50"
