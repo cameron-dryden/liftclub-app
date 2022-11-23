@@ -5,28 +5,7 @@ import { Path, G } from "react-native-svg";
 function MessageInput(props) {
   return (
     <HStack space={3} {...props}>
-      <Input
-        width="80%"
-        height="40px"
-        variant="rounded"
-        backgroundColor="grayscale.1"
-        borderColor="grayscale.4"
-        borderWidth="2"
-        py="0"
-        px="3"
-        placeholder="Type your message..."
-        placeholderTextColor="grayscale.4"
-        color="grayscale.6"
-        fontSize="16"
-        fontWeight="500"
-        lineHeight="24"
-        _input={{ bg: "grayscale.1" }}
-        _focus={{
-          borderColor: "app.primary",
-          _android: { selectionColor: "grayscale.6" },
-          _ios: { selectionColor: "grayscale.6" },
-        }}
-      />
+      <Input width="80%" height="40px" placeholder="Type your message..." />
       <IconButton
         rounded="full"
         bg="app.primary"

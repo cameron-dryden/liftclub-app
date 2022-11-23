@@ -37,6 +37,29 @@ export default function App() {
         6: "#111111",
       },
     },
+    components: {
+      Input: {
+        defaultProps: {
+          variant: "rounded",
+          backgroundColor: "grayscale.1",
+          borderColor: "app.tertiary",
+          borderWidth: "2",
+          py: "0",
+          px: "3",
+          placeholderTextColor: "grayscale.4",
+          color: "app.primary",
+          fontSize: "16",
+          fontWeight: "500",
+          lineHeight: "24",
+          _input: { bg: "grayscale.1" },
+          _focus: {
+            borderColor: "app.primary",
+            _android: { selectionColor: "app.primary" },
+            _ios: { selectionColor: "app.primary" },
+          },
+        },
+      },
+    },
     fontConfig: {
       Manrope: {
         100: {

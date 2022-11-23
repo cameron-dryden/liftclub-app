@@ -2,7 +2,6 @@ import React from "react";
 import { Box, HStack, VStack, Badge } from "native-base";
 import { Heading4, Heading5 } from "../Typography/Headings";
 import { Body3 } from "../Typography/Body";
-import { Chip } from "../Chip";
 
 function AgendaItem(props) {
   return (
