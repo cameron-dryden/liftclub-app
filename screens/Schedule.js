@@ -5,11 +5,36 @@ import { Header } from "../components/Header";
 import { LiftsCalendar } from "../components/Schedule/LiftsCalendar";
 import { LiftsAgenda } from "../components/Schedule/LiftsAgenda";
 
-function Schedule() {
+function Schedule(props) {
   const [selectedDate, setSelectedDate] = React.useState(() => {
     const today = new Date();
     return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
   });
+  // const [liftclubs, setLiftclubs] = React.useState([]);
+  // const [isLoading, setLoading] = React.useState(true);
+
+  // const getLiftclubs = async () => {
+  //   try {
+  //     const response = await fetch("http://192.168.186.4:8080/liftclubs", {
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const json = await response.json();
+  //     console.log(json);
+  //     setLiftclubs(json);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // React.useEffect(() => {
+  //   getLiftclubs();
+  // }, []);
 
   return (
     <Box height="100%" bg="grayscale.1" safeAreaTop>
@@ -21,7 +46,10 @@ function Schedule() {
             <LiftsAgenda date={selectedDate} />
           </VStack>
         </ScrollView>
-        <NavBar position="relative" />
+        <NavBar
+          navSelected={props.navSelected}
+          setNavSelected={props.setNavSelected}
+        />
       </Flex>
     </Box>
   );

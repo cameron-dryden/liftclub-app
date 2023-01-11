@@ -22,7 +22,6 @@ function ClubChat(props) {
     "Stuck in traffic",
     "I'm around the corner",
   ];
-  const messages = require("../../testing/messages.json");
 
   return (
     <Box height="100%" bg="grayscale.1" safeAreaTop>
@@ -54,13 +53,13 @@ function ClubChat(props) {
           />
           <ScrollView flex={1} width="100%">
             <VStack space={2} py="10px" px="5px">
-              {messages.map((message) => (
+              {/* {messages.map((message) => (
                 <MessageBox
                   key={message.id}
                   senderName={message.first_name + " " + message.last_name}
                   messageText={message.message_text}
                 ></MessageBox>
-              ))}
+              ))} */}
             </VStack>
           </ScrollView>
           <VStack space={2} pb="8px" pt="3px" alignItems="center">

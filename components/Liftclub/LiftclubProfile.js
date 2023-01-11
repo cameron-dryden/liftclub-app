@@ -1,7 +1,15 @@
 import React from "react";
-import { Box, HStack, VStack, Badge, Flex, Pressable, Icon } from "native-base";
+import {
+  Box,
+  HStack,
+  VStack,
+  Badge,
+  Flex,
+  Pressable,
+  Icon,
+  Heading,
+} from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Heading3 } from "../Typography/Headings";
 
 function LiftclubProfile(props) {
   const dayShort = [
@@ -30,7 +38,7 @@ function LiftclubProfile(props) {
         <Flex width="100%" flexDirection="row">
           <Box width="10px" roundedLeft="10px" bg={props.clubColor}></Box>
           <VStack space={3} pl="10px" pb="40px" pt="5px" flex={1}>
-            <Heading3>{props.clubName}</Heading3>
+            <Heading size="h3">{props.clubName}</Heading>
             <HStack space={1}>
               {dayShort.map((day) => (
                 <Badge

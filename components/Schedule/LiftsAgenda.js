@@ -1,7 +1,5 @@
 import React from "react";
-import { Box, HStack, VStack, Badge } from "native-base";
-import { Heading4, Heading5 } from "../Typography/Headings";
-import { Body3 } from "../Typography/Body";
+import { Box, HStack, VStack, Badge, Text, Heading } from "native-base";
 
 function AgendaItem(props) {
   return (
@@ -20,12 +18,12 @@ function AgendaItem(props) {
           alignItems="center"
           justifyContent="center"
         >
-          <Heading5>{props.time}</Heading5>
+          <Heading size="h5">{props.time}</Heading>
         </Box>
         <Box justifyContent="center">
-          <Body3 fontWeight="500" pl="10px">
+          <Text size="b3" fontWeight="500" pl="10px">
             {props.clubName}
-          </Body3>
+          </Text>
         </Box>
       </HStack>
     </Box>
@@ -93,7 +91,7 @@ function LiftsAgenda(props) {
       <VStack width="100%" space={2} pt="5px" pb="10px" alignItems="center">
         <HStack justifyContent="center" space={2}>
           {daysBetween()}
-          <Heading4> {`${day} ${month} ${year}`}</Heading4>
+          <Heading size="h4"> {`${day} ${month} ${year}`}</Heading>
         </HStack>
         <AgendaItem
           agendaColor="app.red"

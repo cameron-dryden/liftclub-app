@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
-import { Box } from "native-base";
-import { Heading3 } from "../Typography/Headings";
+import { Box, Heading } from "native-base";
 
 LocaleConfig.locales["en"] = {
   monthNames: [
@@ -36,32 +35,64 @@ LocaleConfig.locales["en"] = {
   dayNamesShort: ["S", "M", "T", "W", "T", "F", "S"],
 };
 LocaleConfig.defaultLocale = "en";
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function getFormattedDate(date) {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${String(
+    date.getDate()
+  ).padStart(2, "0")}`;
+}
 
 function LiftsCalendar(props) {
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const [isLoading, setLoading] = React.useState(true);
+  const [markedPeriods, setMarkedPeriods] = useState({});
+  const [allMarkings, setAllMarkings] = useState({});
+  let selectedDate = {};
 
-  const [markedDate, setMarkedDate] = useState(() => {
-    const today = new Date();
-    const currentDate = `${today.getFullYear()}-${
-      today.getMonth() + 1
-    }-${today.getDate()}`;
-    let markToday = {};
-    markToday[currentDate] = { selected: true };
-    return markToday;
-  });
+  const getMarkedDates = async () => {
+    try {
+      const response = await fetch("http://192.168.186.4:8080/liftclubs", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await response.json();
+
+      let markedPeriods = {};
+      json.forEach((item) => {
+        item.days.forEach((day) => {
+          markedPeriods[getFormattedDate(new Date(day.date))] = {
+            periods: [{ startingDay: true, endingDay: true, color: "#F5A3A3" }],
+          };
+        });
+      });
+      setMarkedPeriods(markedPeriods);
+      setAllMarkings({ ...markedPeriods, ...selectedDate });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    getMarkedDates();
+  }, []);
 
   return (
     <Box
@@ -79,25 +110,19 @@ function LiftsCalendar(props) {
       <Calendar
         enableSwipeMonths={true}
         showSixWeeks={true}
-        markedDates={markedDate}
+        markedDates={allMarkings}
         markingType="multi-period"
         renderHeader={(date) => {
-          return <Heading3>{monthNames[date.getMonth()]}'s lifts</Heading3>;
+          return (
+            <Heading size="h3">{monthNames[date.getMonth()]}'s lifts</Heading>
+          );
         }}
         onDayPress={(day) => {
-          let markedDates = {};
-          markedDates[day.dateString] = {
-            selected: true,
-          };
-          markedDates["2022-11-17"] = {
-            periods: [
-              { startingDay: true, endingDay: true, color: "#F5A3A3" },
-              { startingDay: true, endingDay: true, color: "#DBA3F5" },
-            ],
-          };
+          selectedDate = {};
+          selectedDate[day.dateString] = { selected: true };
+          setAllMarkings({ ...markedPeriods, ...selectedDate });
 
           props.setDate(day.dateString);
-          setMarkedDate(markedDates);
         }}
         theme={{
           textSectionTitleColor: "#ABABB5",

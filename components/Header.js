@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, HStack } from "native-base";
-import { Heading1, Heading2 } from "./Typography/Headings";
+import { Box, HStack, Heading } from "native-base";
 
 function Header(props) {
   return (
@@ -28,9 +27,9 @@ function Header(props) {
             ""
           )}
           {props.mini ? (
-            <Heading2>{props.text}</Heading2>
+            <Heading size="h2">{props.text}</Heading>
           ) : (
-            <Heading1>{props.text}</Heading1>
+            <Heading size="h1">{props.text}</Heading>
           )}
         </HStack>
       </Box>

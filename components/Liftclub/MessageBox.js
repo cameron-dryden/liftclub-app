@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Circle, HStack, VStack } from "native-base";
-import { Body4, Body5 } from "../Typography/Body";
+import { Box, Circle, HStack, VStack, Text } from "native-base";
 
 function MessageBox(props) {
   return (
@@ -26,13 +25,13 @@ function MessageBox(props) {
       >
         <VStack px="10px" pt="2px" pb="6px">
           {props.senderName ? (
-            <Body5 fontWeight="700" textTransform="uppercase" py="1px">
+            <Text size="b5" fontWeight="700" textTransform="uppercase" py="1px">
               {props.senderName}
-            </Body5>
+            </Text>
           ) : (
             ""
           )}
-          <Body4>{props.messageText}</Body4>
+          <Text size="b4">{props.messageText}</Text>
         </VStack>
       </Box>
     </HStack>

@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, HStack, Icon, IconButton } from "native-base";
+import { Box, HStack, Icon, IconButton, Heading } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Heading5 } from "../Typography/Headings";
 
 function AccountCard(props) {
   return (
@@ -22,7 +21,7 @@ function AccountCard(props) {
           color="grayscale.4"
           size="64px"
         />
-        <Heading5>Daniela Damiani</Heading5>
+        <Heading size="h5">Daniela Damiani</Heading>
         <IconButton
           icon={
             <Icon

@@ -2,12 +2,12 @@ import React from "react";
 import { Circle, Input, Icon } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
-function SearchBar() {
+function SearchBar(props) {
   return (
     <Input
+      variant="condensedInput"
       width="80%"
       height="10"
-      placeholder="Search for lift clubs"
       InputRightElement={
         <Circle size="37px" alignItems="center" bg="app.secondary">
           <Icon
@@ -18,6 +18,7 @@ function SearchBar() {
           />
         </Circle>
       }
+      {...props}
     />
   );
 }
