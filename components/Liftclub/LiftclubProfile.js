@@ -38,7 +38,7 @@ function LiftclubProfile(props) {
         <Flex width="100%" flexDirection="row">
           <Box width="10px" roundedLeft="10px" bg={props.clubColor}></Box>
           <VStack space={3} pl="10px" pb="40px" pt="5px" flex={1}>
-            <Heading size="h3">{props.clubName}</Heading>
+            <Heading size="lg">{props.clubName}</Heading>
             <HStack space={1}>
               {dayShort.map((day) => (
                 <Badge

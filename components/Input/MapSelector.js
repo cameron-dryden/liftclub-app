@@ -45,7 +45,6 @@ const mapStyle = [
 function MapSelector(props) {
   const [isReady, setReady] = useState(false);
   const [userLocation, setUserLocation] = useState({});
-  const [selectedLocation, setSelectedLocation] = useState();
   const [selectedAddress, setAddress] = useState();
 
   const mapRef = useRef(null);
@@ -81,8 +80,8 @@ function MapSelector(props) {
   }, []);
 
   return (
-    <Box width="100%" height="55%" rounded="10px" overflow="hidden">
-      <Skeleton height="50%" width="100%" isLoaded={isReady}>
+    <Box width="100%" height="100%" rounded="10px" overflow="hidden">
+      <Skeleton height="100%" width="100%" isLoaded={isReady}>
         <MapView
           ref={mapRef}
           showsUserLocation={true}
@@ -100,17 +99,14 @@ function MapSelector(props) {
                 latitudeDelta: 0.005,
                 longitudeDelta: 0.005,
               },
-              1000
+              600
             );
           }}
           onRegionChangeComplete={async (region) => {
-            setSelectedLocation({
+            props.setLocationValue({
               longitude: region["longitude"],
               latitude: region["latitude"],
             });
-            // updateUserAddress(selectedLocation).catch((reason) => {
-            //   console.log(reason);
-            // });
           }}
           {...props}
         />

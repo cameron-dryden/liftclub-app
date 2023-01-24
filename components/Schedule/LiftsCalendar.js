@@ -114,7 +114,7 @@ function LiftsCalendar(props) {
         markingType="multi-period"
         renderHeader={(date) => {
           return (
-            <Heading size="h3">{monthNames[date.getMonth()]}'s lifts</Heading>
+            <Heading size="lg">{monthNames[date.getMonth()]}'s lifts</Heading>
           );
         }}
         onDayPress={(day) => {

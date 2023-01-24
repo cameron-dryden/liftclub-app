@@ -27,9 +27,9 @@ function Header(props) {
             ""
           )}
           {props.mini ? (
-            <Heading size="h2">{props.text}</Heading>
+            <Heading size="xl">{props.text}</Heading>
           ) : (
-            <Heading size="h1">{props.text}</Heading>
+            <Heading size="2xl">{props.text}</Heading>
           )}
         </HStack>
       </Box>

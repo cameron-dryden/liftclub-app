@@ -18,6 +18,18 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const theme = extendTheme({
     colors: {
+      primary: {
+        50: "#e1f8fe",
+        100: "#c0e4ef",
+        200: "#9dd1e1",
+        300: "#78bed4",
+        400: "#55aac7",
+        500: "#3e92ae",
+        600: "#2e7188",
+        700: "#1e5162",
+        800: "#0c313d",
+        900: "#001219",
+      },
       app: {
         primary: "#8BBDD8",
         secondary: "#C7DEE9",
@@ -47,94 +59,56 @@ export default function App() {
       },
     },
     components: {
-      Text: {
-        sizes: {
-          b1: {
-            fontSize: "22px",
-            lineHeight: "30px",
-          },
-          b2: {
-            fontSize: "20px",
-            lineHeight: "28px",
-          },
-          b3: {
-            fontSize: "18px",
-            lineHeight: "26px",
-          },
-          b4: {
-            fontSize: "16px",
-            lineHeight: "24px",
-          },
-          b5: {
-            fontSize: "14px",
-            lineHeight: "22px",
-          },
-          b6: {
-            fontSize: "12px",
-            lineHeight: "20px",
-          },
-        },
-        defaultProps: {
-          fontWeight: "400",
-          color: "grayscale.6",
-          size: "b1",
-        },
-      },
-      Heading: {
-        sizes: {
-          h1: {
-            fontSize: "40px",
-            lineHeight: "48px",
-          },
-          h2: {
-            fontSize: "28px",
-            lineHeight: "36px",
-          },
-          h3: {
-            fontSize: "24px",
-            lineHeight: "32px",
-          },
-          h4: {
-            fontSize: "20px",
-            lineHeight: "28px",
-          },
-          h5: {
-            fontSize: "18px",
-            lineHeight: "28px",
-          },
-        },
-        defaultProps: {
-          fontWeight: "600",
-          color: "grayscale.6",
-          size: "h1",
-        },
-      },
       Input: {
         variants: {
           fancyInput: ({}) => {
             return {
               variant: "underlined",
-              backgroundColor: "grayscale.1",
-              borderColor: "grayscale.3",
               borderWidth: "0px",
               borderBottomWidth: "1px",
               pt: "1px",
               pb: "2px",
               px: "10px",
-              placeholderTextColor: "grayscale.4",
-              color: "grayscale.6",
-              fontSize: "14",
               fontWeight: "700",
-              letterSpacing: "0.5px",
-              _input: { bg: "grayscale.1" },
+              _input: {
+                fontSize: "14",
+              },
               _focus: {
                 letterSpacing: "0px",
-                fontSize: "16",
                 placeholder: "",
                 borderBottomWidth: "0px",
                 rounded: "10px",
+                _input: {
+                  fontSize: "16",
+                },
                 _android: { selectionColor: "grayscale.6" },
                 _ios: { selectionColor: "grayscale.6" },
+              },
+              _light: {
+                backgroundColor: "grayscale.1",
+                borderColor: "grayscale.3",
+                placeholderTextColor: "grayscale.4",
+                color: "grayscale.6",
+                _input: {
+                  bg: "grayscale.1",
+                },
+                _focus: {
+                  _android: { selectionColor: "grayscale.6" },
+                  _ios: { selectionColor: "grayscale.6" },
+                },
+              },
+              _dark: {
+                backgroundColor: "grayscale.6",
+                borderColor: "app.primary",
+                placeholderTextColor: "grayscale.2",
+                color: "app.primary",
+                _input: {
+                  bg: "grayscale.6",
+                },
+                _focus: {
+                  _android: { selectionColor: "grayscale.1" },
+                  _ios: { selectionColor: "grayscale.1" },
+                },
               },
             };
           },
@@ -146,7 +120,7 @@ export default function App() {
               borderWidth: "2",
               borderRadius: "full",
               py: "0",
-              px: "3",
+              px: "15px",
               placeholderTextColor: "grayscale.4",
               color: "app.primary",
               fontSize: "16",
@@ -161,26 +135,14 @@ export default function App() {
             };
           },
         },
-        defaultProps: {
-          variant: "fancyInput",
-        },
+        // defaultProps: {
+        //   variant: "fancyInput",
+        // },
       },
       Link: {
-        variants: {
-          basic: ({}) => {
-            return {
-              _text: {
-                color: "app.primary",
-                fontWeight: "600",
-                fontSize: "16px",
-                lineHeight: "24px",
-              },
-            };
-          },
-        },
         defaultProps: {
+          _text: { color: "primary.200" },
           isUnderlined: false,
-          variant: "basic",
         },
       },
       Button: {
@@ -229,14 +191,19 @@ export default function App() {
         variants: {
           fancyInput: ({}) => {
             return {
-              bg: "grayscale.1",
+              _light: {
+                bg: "grayscale.1",
+              },
+              _dark: {
+                bg: "grayscale.6",
+              },
               rounded: "10px",
             };
           },
         },
-        defaultProps: {
-          variant: "fancyInput",
-        },
+        // defaultProps: {
+        //   variant: "fancyInput",
+        // },
       },
       FormControlLabel: {
         variants: {
@@ -245,18 +212,27 @@ export default function App() {
               _text: {
                 fontSize: "12",
                 fontWeight: "700",
-                color: "grayscale.4",
                 letterSpacing: "0.5px",
                 pr: "2px",
               },
               ml: "42px",
               my: "0px",
+              _light: {
+                _text: {
+                  color: "grayscale.4",
+                },
+              },
+              _dark: {
+                _text: {
+                  color: "grayscale.2",
+                },
+              },
             };
           },
         },
-        defaultProps: {
-          variant: "fancyInput",
-        },
+        // defaultProps: {
+        //   variant: "fancyInput",
+        // },
       },
       Radio: {
         variants: {

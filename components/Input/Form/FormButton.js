@@ -1,8 +1,7 @@
-import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { Button, useColorModeValue } from "native-base";
+import { Button } from "native-base";
 
-function GradientButton(props) {
+function FormButton(props) {
   return (
     <LinearGradient
       start={{ x: 0.0, y: 0.5 }}
@@ -10,7 +9,7 @@ function GradientButton(props) {
         x: 1.0,
         y: 0.5,
       }}
-      colors={useColorModeValue(["#B1CDE2", "#8BBDD8"], ["#8BBDD8", "#5C8CB3"])}
+      colors={["#c0e4ef", "#9dd1e1"]}
       elevation={3}
       style={{
         borderRadius: 50,
@@ -25,11 +24,20 @@ function GradientButton(props) {
         shadowRadius: 2.22,
       }}
     >
-      <Button variant="gradient" {...props}>
+      <Button
+        variant="unstyled"
+        _text={{
+          color: "white",
+          fontWeight: "medium",
+          lineHeight: "sm",
+        }}
+        _pressed={{ opacity: 0.5 }}
+        {...props}
+      >
         {props.buttonText}
       </Button>
     </LinearGradient>
   );
 }
 
-export { GradientButton };
+export default FormButton;

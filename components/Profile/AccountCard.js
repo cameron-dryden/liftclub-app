@@ -21,7 +21,7 @@ function AccountCard(props) {
           color="grayscale.4"
           size="64px"
         />
-        <Heading size="h5">Daniela Damiani</Heading>
+        <Heading size="sm">Daniela Damiani</Heading>
         <IconButton
           icon={
             <Icon

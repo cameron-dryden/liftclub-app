@@ -25,13 +25,13 @@ function MessageBox(props) {
       >
         <VStack px="10px" pt="2px" pb="6px">
           {props.senderName ? (
-            <Text size="b5" fontWeight="700" textTransform="uppercase" py="1px">
+            <Text size="sm" fontWeight="700" textTransform="uppercase" py="1px">
               {props.senderName}
             </Text>
           ) : (
             ""
           )}
-          <Text size="b4">{props.messageText}</Text>
+          <Text size="mdb4">{props.messageText}</Text>
         </VStack>
       </Box>
     </HStack>

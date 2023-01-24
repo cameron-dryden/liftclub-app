@@ -18,10 +18,10 @@ function AgendaItem(props) {
           alignItems="center"
           justifyContent="center"
         >
-          <Heading size="h5">{props.time}</Heading>
+          <Heading size="sm">{props.time}</Heading>
         </Box>
         <Box justifyContent="center">
-          <Text size="b3" fontWeight="500" pl="10px">
+          <Text size="lg" fontWeight="500" pl="10px">
             {props.clubName}
           </Text>
         </Box>
@@ -91,7 +91,7 @@ function LiftsAgenda(props) {
       <VStack width="100%" space={2} pt="5px" pb="10px" alignItems="center">
         <HStack justifyContent="center" space={2}>
           {daysBetween()}
-          <Heading size="h4"> {`${day} ${month} ${year}`}</Heading>
+          <Heading size="md"> {`${day} ${month} ${year}`}</Heading>
         </HStack>
         <AgendaItem
           agendaColor="app.red"

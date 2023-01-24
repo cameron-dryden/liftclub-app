@@ -20,7 +20,6 @@ function InputField(props) {
       )}
       <Input
         placeholder={String(props.placeholderText).toUpperCase()}
-        value={props.value}
         InputLeftElement={
           props.iconName ? (
             <Icon
@@ -28,7 +27,8 @@ function InputField(props) {
               size="24px"
               ml="8px"
               mb="2px"
-              color={isInputFocused ? "grayscale.6" : "grayscale.4"}
+              _light={{ color: isInputFocused ? "grayscale.6" : "grayscale.4" }}
+              _dark={{ color: isInputFocused ? "grayscale.1" : "grayscale.3" }}
             />
           ) : (
             ""

@@ -20,7 +20,7 @@ function SignUp() {
         justifyContent="center"
       >
         <VStack width="80%" space={7}>
-          <Heading size="h1" fontWeight="900">
+          <Heading size="2xl" fontWeight="900">
             Create Account
           </Heading>
           <VStack space={4} alignItems="center">
@@ -79,25 +79,15 @@ function SignUp() {
                 setLoading(false);
               }}
             />
-            {/* <InputButton
-              buttonText="Sign Up"
-              isLoading={isLoading}
-              isLoadingText="Signing up"
-              onPress={() => {
-                addUser();
-              }}
-            /> */}
           </VStack>
           <HStack space={1} width="100%" justifyContent="center">
-            <Text size="b4" color="grayscale.4">
-              Already have an account?
-            </Text>
+            <Text color="grayscale.4">Already have an account?</Text>
             <Link
               onPress={() => {
                 navigation.navigate("login");
               }}
             >
-              Sign in
+              Log in
             </Link>
           </HStack>
         </VStack>

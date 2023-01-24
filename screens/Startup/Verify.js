@@ -12,13 +12,13 @@ import {
   Heading,
   Select,
   Icon,
-  FormControl,
-  Input,
 } from "native-base";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { InputField } from "../../components/Login/InputField";
 import { GradientButton } from "../../components/Login/GradientButton";
+import { SearchSelect } from "../../components/Input/SearchSelect";
 
 const pb = new PocketBase("http://105.184.248.220:8080");
 
@@ -26,7 +26,7 @@ function Verify() {
   const navigation = useNavigation();
   const [institutions, setInstitutions] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [formData, setData] = useState({ phoneNumberCode: "27" });
+  const [formData, setData] = useState({ phoneNumberCode: "27", sex: "male" });
   const [selectedValue, setValue] = useState();
 
   const getInstitutionsList = async () => {
@@ -59,18 +59,19 @@ function Verify() {
         justifyContent="center"
       >
         <VStack width="80%" space={7}>
-          <Heading size="h1" fontWeight="900">
+          <Heading size="2xl" fontWeight="900">
             Verify Account
           </Heading>
           <VStack space={4} alignItems="center">
             <Radio.Group
               name="sex"
+              value={formData.sex}
               onChange={(value) => {
+                console.log(formData);
                 setData({ ...formData, sex: value });
               }}
             >
               <Text
-                size="b5"
                 fontWeight="700"
                 textTransform="uppercase"
                 color="grayscale.4"
@@ -90,7 +91,7 @@ function Verify() {
               isRequired={true}
               InputLeftElement={
                 <Select
-                  variant="unstyled"
+                  variant="test"
                   p="0"
                   pb="2px"
                   pl="5px"
@@ -124,40 +125,25 @@ function Verify() {
                   <Select.Item label="+45" value="45" />
                 </Select>
               }
-              onChange={(value) => setData({ ...formData, phoneNumber: value })}
+              onChangeText={(value) =>
+                setData({ ...formData, phoneNumber: value })
+              }
             />
-            <Select
-              variant="outline"
+            <SearchSelect
               selectedValue={formData.institution}
-              width="100%"
               accessibilityLabel="Select your institution"
-              placeholder="Select your institution"
+              placeholder="SELECT YOUR INSTITUTION"
               onOpen={async () => {
                 await getInstitutionsList();
               }}
               onValueChange={(value) => {
                 setData({ ...formData, institution: value });
               }}
-              _actionSheetBody={{
-                ListHeaderComponent: (
-                  <FormControl px={3} mb={3}>
-                    <Input
-                      px={15}
-                      py={2}
-                      fontSize={16}
-                      value={selectedValue}
-                      placeholder="Search"
-                      _focus={{
-                        bg: "grayscale.1",
-                        borderColor: "darkBlue.600",
-                      }}
-                      type="text"
-                      onChangeText={(value) => {
-                        setValue(value);
-                      }}
-                    />
-                  </FormControl>
-                ),
+              search={{
+                value: selectedValue,
+                onChangeText: (value) => {
+                  setValue(value);
+                },
               }}
             >
               {institutions.map((institution) => {
@@ -169,13 +155,13 @@ function Verify() {
                   />
                 );
               })}
-            </Select>
+            </SearchSelect>
             <InputField
               placeholderText="Student number"
               value={formData.studentNumber}
               iconName="school-outline"
               isRequired={true}
-              onChange={(value) =>
+              onChangeText={(value) =>
                 setData({ ...formData, studentNumber: value })
               }
             />

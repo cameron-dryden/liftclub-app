@@ -8,7 +8,6 @@ async function createLiftclub(liftclubData) {
 
   try {
     liftclubInfo.owner = pb.authStore.model.id;
-    console.log(liftclubInfo);
     const record = await pb.collection("liftclubs").create(liftclubInfo);
     return true;
   } catch (error) {

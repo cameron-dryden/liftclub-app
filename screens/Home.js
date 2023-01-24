@@ -94,7 +94,7 @@ function Home(props) {
                 latitudeDelta: 0.0222,
                 longitudeDelta: 0.0221,
               },
-              1000
+              700
             );
           }}
           onPress={(e) => console.log(e.nativeEvent)}

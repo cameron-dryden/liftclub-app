@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import listLiftclubs from "../../api/liftclubs/listLiftclubs";
+import { useFocusEffect } from "@react-navigation/native";
 import { RefreshControl } from "react-native";
 import { Box, Flex, FlatList } from "native-base";
 import { Header } from "../../components/Header";
@@ -32,9 +33,11 @@ function LiftsLift(props) {
     }
   };
 
-  useEffect(() => {
-    getLiftclubs();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getLiftclubs();
+    }, [])
+  );
 
   return (
     <Box height="100%" bg="grayscale.1" safeAreaTop>
