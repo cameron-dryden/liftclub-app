@@ -1,9 +1,7 @@
-import { Input } from "native-base";
+import FormInput from "./FormInput";
 
-function FormInput(props) {
-  return (
-    <Input variant="underlined" size="lg" keyboardType="numeric" {...props} />
-  );
+function FormNumberInput(props) {
+  return <FormInput keyboardType="numeric" {...props} />;
 }
 
-export default FormInput;
+export default FormNumberInput;

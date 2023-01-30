@@ -17,14 +17,16 @@ function FormPassword(props) {
       <FormInput
         type={passwordVisible ? "text" : "password"}
         InputRightElement={
-          <Link
-            _text={{ fontWeight: "semibold" }}
-            onPress={() => {
-              setModalVisible(true);
-            }}
-          >
-            FORGOT
-          </Link>
+          props.addForgot && (
+            <Link
+              _text={{ fontWeight: "semibold" }}
+              onPress={() => {
+                setModalVisible(true);
+              }}
+            >
+              FORGOT
+            </Link>
+          )
         }
         InputLeftElement={
           isInputFocused ? (

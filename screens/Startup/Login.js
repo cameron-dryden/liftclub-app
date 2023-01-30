@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { Box, Flex, VStack, HStack, Link, Text, Heading } from "native-base";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import AnimatedLogo from "../../assets/AnimatedLogo";
+import Test from "../../assets/Test";
 import { EmailAlternate } from "../../assets/icons/Icons";
 import {
   FormButton,
@@ -16,8 +17,8 @@ import {
 
 SplashScreen.preventAutoHideAsync();
 
-function Login() {
-  const navigation = useNavigation();
+function Login({ navigation }) {
+  const mainnavigation = useNavigation();
   const [isReady, setReady] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [keyboardShowing, setKeyboardShowing] = useState(false);
@@ -32,9 +33,9 @@ function Login() {
         try {
           pb.authStore.isValid && (await pb.collection("users").authRefresh());
           if (pb.authStore.model.verified) {
-            navigation.navigate("home");
+            mainnavigation.navigate("home");
           } else {
-            navigation.navigate("verify");
+            navigation.navigate("email-verification");
           }
         } catch (_) {
           pb.authStore.clear();
@@ -92,6 +93,7 @@ function Login() {
         alignItems="center"
       >
         <AnimatedLogo width="70%" height="70%" />
+        {/* <Test textWidth={2} /> */}
       </Box>
       <VStack space={6} width="85%" flex={2} alignSelf="center">
         <VStack>
@@ -102,7 +104,7 @@ function Login() {
             lineHeight="xs"
             color="text.400"
           >
-            Please log in to continue.
+            Please log in to continue
           </Text>
         </VStack>
         <VStack alignItems="center" space={10}>
@@ -124,6 +126,7 @@ function Login() {
             />
             <FormPassword
               placeholder="Password"
+              addForgot={true}
               value={formData.password}
               onChangeText={(value) =>
                 setData({ ...formData, password: value })
@@ -147,9 +150,9 @@ function Login() {
                   console.log("Unable to save user token");
                 }
                 if (pb.authStore.model.verified) {
-                  navigation.navigate("home");
+                  mainnavigation.navigate("home");
                 } else {
-                  navigation.navigate("verify");
+                  navigation.navigate("email-verification");
                 }
               } else {
                 console.log(result);
@@ -159,21 +162,24 @@ function Login() {
           />
         </VStack>
       </VStack>
-      {!keyboardShowing && (
-        <HStack justifyContent="center" space={1} safeAreaBottom height="8%">
-          <Text fontSize="md" color="text.500">
-            Don't have an account?
-          </Text>
-          <Link
-            _text={{ fontSize: "md" }}
-            onPress={() => {
-              navigation.navigate("signup");
-            }}
-          >
-            Sign up
-          </Link>
-        </HStack>
-      )}
+
+      <HStack justifyContent="center" space={1} safeAreaBottom height="8%">
+        {!keyboardShowing && (
+          <>
+            <Text fontSize="md" color="text.500">
+              Don't have an account?
+            </Text>
+            <Link
+              _text={{ fontSize: "md" }}
+              onPress={() => {
+                navigation.navigate("signup");
+              }}
+            >
+              Sign up
+            </Link>
+          </>
+        )}
+      </HStack>
     </Flex>
   );
 }

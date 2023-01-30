@@ -1,6 +1,6 @@
 import { Input } from "native-base";
 
-function FormInput(props) {
+function ModalInput(props) {
   return (
     <Input
       variant="outline"
@@ -16,4 +16,4 @@ function FormInput(props) {
   );
 }
 
-export default FormInput;
+export default ModalInput;

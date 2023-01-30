@@ -9,9 +9,7 @@ import { Liftclub } from "./screens/Liftclub/Liftclub";
 import { Schedule } from "./screens/Schedule";
 import { Profile } from "./screens/Profile";
 import { Discover } from "./screens/Discover";
-import { Login } from "./screens/Startup/Login";
-import { SignUp } from "./screens/Startup/SignUp";
-import { Verify } from "./screens/Startup/Verify";
+import { Startup } from "./screens/Startup/Startup";
 
 const Tab = createBottomTabNavigator();
 
@@ -341,9 +339,7 @@ export default function App() {
             tabBarStyle: { display: "none" },
           }}
         >
-          <Tab.Screen name="login">{() => <Login />}</Tab.Screen>
-          <Tab.Screen name="signup">{() => <SignUp />}</Tab.Screen>
-          <Tab.Screen name="verify">{() => <Verify />}</Tab.Screen>
+          <Tab.Screen name="startup">{() => <Startup />}</Tab.Screen>
           <Tab.Screen name="home">
             {() => (
               <Home navSelected={navSelected} setNavSelected={setNavSelected} />

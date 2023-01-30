@@ -7,9 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splashscreen.png",
+      "image": "./assets/Splashscreen.png",
       "resizeMode": "contain",
-      "backgroundColor": "app.primary"
+      "backgroundColor": "primary.100"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
